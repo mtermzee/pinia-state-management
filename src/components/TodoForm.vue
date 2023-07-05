@@ -1,18 +1,15 @@
 <template>
-    <div>
-        <ul>
-            <li>Todo 1</li>
-            <li>Todo 2</li>
-            <li>Todo 3</li>
-        </ul>
-    </div>
+    <form>
+        <input type="text" />
+        <button type="submit">Add</button>
+    </form>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 
 export default defineComponent({
-    name: "TodoList",
+    name: "TodoForm",
     components: {
     },
 });
