@@ -1,18 +1,36 @@
+<!-- components/TodoForm.vue -->
 <template>
-    <form>
-        <input type="text" />
+    <form @submit.prevent="addItemAndClear(todo)">
+        <input v-model="todo" type="text" />
         <button type="submit">Add</button>
     </form>
 </template>
-
+  
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
+import { useTodoListStore } from "@/store/todoList";
 
 export default defineComponent({
     name: "TodoForm",
-    components: {
+    setup() {
+        const todo = ref("");
+        const store = useTodoListStore();
+
+        const addItemAndClear = (item: any) => {
+            if (item.length === 0) {
+                return;
+            }
+            store.addTodoItem(item);
+            todo.value = "";
+        };
+
+        return {
+            todo,
+            addItemAndClear,
+        };
     },
 });
 </script>
-
+  
 <style></style>
+  
